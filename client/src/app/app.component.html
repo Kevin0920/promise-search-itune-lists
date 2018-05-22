@@ -1,0 +1,39 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Itune Search</title>
+</head>
+
+<body>
+  <div class="container">
+    <form class="form-inline">
+      <div class="form-group">
+        <input type="search" class="form-control" placeholder="Enter search string" #search>
+      </div>
+      <button type="button" class="btn btn-primary" (click)="doSearch(search.value)">Search</button>
+    </form>
+
+    <hr/>
+
+    <div class="text-center">
+      <p class="lead" *ngIf="loading">Loading...</p>
+    </div>
+
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let track of itunes.results">
+        <!-- {{itunes | json}} -->
+        <img src="{{track.thumbnail}}">
+        <a target="_blank" href="{{track.link}}">{{ track.track }}
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</body>
+
+</html>
+
+<router-outlet></router-outlet>
